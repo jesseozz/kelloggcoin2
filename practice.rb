@@ -29,21 +29,46 @@ blockchain = [
 # 👇👇👇 Your code HERE 👇👇👇
 
 # Create a new hash for user balances (starting with zero balance)
-balances = Hash.new(0)
+ben_balance = 0
+brian_balance = 0
+evan_balance = 0
+anthony_balance = 0
 
 # For each transaction (with a sender), decrease balances for those who sent money (from_user)
 for transaction in blockchain
-  if transaction["from_user"] != nil
-    balances[transaction["from_user"]] -= transaction["amount"]
+  if transaction["from_user"] == "ben"
+    ben_balance = ben_balance - transaction["amount"] 
+  end
+  if transaction["from_user"] == "brian"
+    brian_balance = brian_balance - transaction["amount"]
+  end
+  if transaction["from_user"] == "evan"
+    evan_balance = evan_balance - transaction["amount"]
+  end
+  if transaction["from_user"] == "anthony"
+    anthony_balance = anthony_balance - transaction["amount"]
   end
 
-# Increase balances for those who received money (to_user)
-  balances[transaction["to_user"]] += transaction["amount"]
+# additions to accounts
+
+    if transaction["to_user"] == "ben"
+      ben_balance = ben_balance + transaction["amount"] 
+    end
+    if transaction["to_user"] == "brian"
+      brian_balance = brian_balance + transaction["amount"]
+    end
+    if transaction["to_user"] == "evan"
+      evan_balance = evan_balance + transaction["amount"]
+    end
+    if transaction["to_user"] == "anthony"
+      anthony_balance = anthony_balance + transaction["amount"]
+    end
+
 end
 
-# Print out each user's balance
-balances.each do |user, balance|
-  puts "#{user.capitalize}'s KelloggCoin balance is #{balance}"
-end
+  puts "Ben's KelloggCoin balance is #{ben_balance}"
+  puts "Brian's KelloggCoin balance is #{brian_balance}"
+  puts "Evan's KelloggCoin balance is #{evan_balance}"
+  puts "Antony's KelloggCoin balance is #{anthony_balance}"
 
-puts balances
+
